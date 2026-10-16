@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Farmology™ — The Science Behind Better Farming</title>
+  <meta name="description" content="Farmology provides science-based soil testing, crop health assessment, organic farming training and millet products by Dr. Gummadala Kasirao, Ph.D."/>
+
+  <!-- ░░ SEO & Crawling ░░ -->
+  <meta name="robots" content="index, follow"/>
+  <meta name="author" content="Dr. Gummadala Kasirao"/>
+  <meta name="keywords" content="organic farming, soil testing, crop health, agronomy, millets, sustainable agriculture, pesticide residue testing, Farmology, Dr Kasirao"/>
+  <link rel="canonical" href="https://farmology.in/"/>
+
+  <!-- ░░ Open Graph (Facebook / WhatsApp Preview) ░░ -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://farmology.in/"/>
+  <meta property="og:title" content="Farmology™ — The Science Behind Better Farming"/>
+  <meta property="og:description" content="Science-based soil testing, crop health assessment, organic farming training and premium millets by Dr. Gummadala Kasirao, Ph.D."/>
+  <meta property="og:image" content="dr-kasirao.jpg"/>
+  <meta property="og:site_name" content="Farmology"/>
+  <meta property="og:locale" content="en_IN"/>
+
+  <!-- ░░ Twitter / X Card ░░ -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Farmology™ — The Science Behind Better Farming"/>
+  <meta name="twitter:description" content="Science-based soil testing, crop health assessment and organic farming training by Dr. Gummadala Kasirao, Ph.D."/>
+  <meta name="twitter:image" content="dr-kasirao.jpg"/>
+
+  <!-- ░░ Browser / PWA ░░ -->
+  <meta name="theme-color" content="#1a5c32"/>
+  <meta name="mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title" content="Farmology"/>
+
+  <!-- ░░ Security Headers ░░ -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN"/>
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin"/>
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()"/>
+
+  <!-- ░░ Favicon ░░ -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;text y='.9em' font-size='90'&gt;🌿&lt;/text&gt;&lt;/svg&gt;"/>
+  <link rel="apple-touch-icon" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;text y='.9em' font-size='90'&gt;🌿&lt;/text&gt;&lt;/svg&gt;"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- ░░ PRELOADER ░░ -->
+<div class="preloader" id="preloader">
+  <div class="preloader-inner">
+    <div class="preloader-logo">
+      <span class="pl-leaf">🌿</span>
+      <span class="pl-text">Farmology</span>
+    </div>
+    <div class="preloader-bar"><div class="preloader-fill" id="preloaderFill"></div></div>
+    <p class="pl-tagline">The Science Behind Better Farming</p>
+  </div>
+</div>
+
+<!-- ░░ CUSTOM CURSOR ░░ -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ░░ FLOATING WHATSAPP ░░ -->
+<a href="https://wa.me/919398544652" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+  <span class="wa-pulse"></span>
+</a>
+
+<!-- ░░ SCROLL PROGRESS ░░ -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ═══════════════════════════════════════
+     NAVBAR
+═══════════════════════════════════════ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo">
+      <div class="logo-icon">🌿</div>
+      <div class="logo-words">
+        <span class="lw-farm">Farm</span><span class="lw-o">o</span><span class="lw-logy">logy</span>
+        <sup class="lw-tm">™</sup>
+      </div>
+    </a>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="#home" class="nav-link">Home</a></li>
+      <li><a href="#services" class="nav-link">Services</a></li>
+      <li><a href="#products" class="nav-link">Products</a></li>
+      <li><a href="#process" class="nav-link">Process</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+    <a href="tel:+919398544652" class="nav-btn">
+      <i class="fas fa-phone-alt"></i><span>+91 93985 44652</span>
+    </a>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════
+     HERO
+═══════════════════════════════════════ -->
+<section class="hero" id="home">
+  <!-- Background layers -->
+  <div class="hero-canvas">
+    <div class="hc-layer hc-dark"></div>
+    <div class="hc-layer hc-grain"></div>
+    <div class="hc-layer hc-vignette"></div>
+  </div>
+
+  <!-- Floating badges -->
+  <div class="hero-badge-tl float-anim">
+    <i class="fas fa-award"></i>
+    <span>10,000+ Farmers Trained</span>
+  </div>
+  <div class="hero-badge-br float-anim-r">
+    <i class="fas fa-flask"></i>
+    <span>16 Soil Parameters</span>
+  </div>
+
+  <div class="hero-content">
+    <!-- Left column -->
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <span class="eyebrow-dot"></span>
+        Organic Science · Sustainable Future
+      </div>
+      <h1 class="hero-h1">
+        <span class="h1-line reveal-line">Healthy Soil.</span>
+        <span class="h1-line reveal-line accent-line">Healthy Crops.</span>
+        <span class="h1-line reveal-line">Better Yields.</span>
+      </h1>
+      <p class="hero-desc">
+        Science-driven diagnostics and organic farming expertise by
+        <strong>Dr. Gummadala Kasirao, Ph.D.</strong> — transforming Indian
+        agriculture one farm at a time.
+      </p>
+      <div class="hero-actions">
+        <a href="#services" class="ha-primary">
+          <span>Explore Services</span>
+          <div class="btn-arrow"><i class="fas fa-arrow-right"></i></div>
+        </a>
+        <a href="#about" class="ha-ghost">
+          <i class="fas fa-play-circle"></i> Meet Dr. Kasirao
+        </a>
+      </div>
+      <!-- Trust strip -->
+      <div class="hero-trust">
+        <div class="trust-item">
+          <span class="ti-num" data-target="10000">0</span><span class="ti-suf">+</span>
+          <span class="ti-label">Farmers Trained</span>
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-item">
+          <span class="ti-num" data-target="50">0</span><span class="ti-suf">+</span>
+          <span class="ti-label">Publications</span>
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-item">
+          <span class="ti-num" data-target="16">0</span><span class="ti-suf">+</span>
+          <span class="ti-label">Soil Parameters</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right column — visual card stack -->
+    <div class="hero-right">
+      <div class="hero-card-stack">
+        <!-- Main card -->
+        <div class="hcs-main">
+          <div class="hcs-main-img" style="background:linear-gradient(145deg,#0f3d1a,#1a6632)">
+            <div class="hcs-img-content">
+              <div class="hcs-icon-big">🌱</div>
+              <p class="hcs-caption">Real Data. Right Advice. Better Results.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Floating metric cards -->
+        <div class="hcs-metric hcs-m1">
+          <div class="hcs-m-icon">🧪</div>
+          <div>
+            <strong>Soil pH</strong>
+            <span>Optimal: 6.5–7.0</span>
+          </div>
+        </div>
+        <div class="hcs-metric hcs-m2">
+          <div class="hcs-m-icon">📊</div>
+          <div>
+            <strong>N-P-K Balance</strong>
+            <span>Crop-specific plan</span>
+          </div>
+        </div>
+        <div class="hcs-metric hcs-m3">
+          <div class="hcs-m-icon">🛡️</div>
+          <div>
+            <strong>Zero Residue</strong>
+            <span>Certified Organic</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll cue -->
+  <div class="hero-scroll-cue">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     MARQUEE STRIP
+═══════════════════════════════════════ -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <div class="marquee-content">
+      <span>🌾 Soil Testing</span>
+      <span class="ms-dot">✦</span>
+      <span>🔬 Crop Health Assessment</span>
+      <span class="ms-dot">✦</span>
+      <span>📋 Nutrition Scheduling</span>
+      <span class="ms-dot">✦</span>
+      <span>🛡️ Pesticide Residue Testing</span>
+      <span class="ms-dot">✦</span>
+      <span>🎓 Organic Farming Training</span>
+      <span class="ms-dot">✦</span>
+      <span>🌿 Organic Millets</span>
+      <span class="ms-dot">✦</span>
+      <span>♻️ Sustainable Agriculture</span>
+      <span class="ms-dot">✦</span>
+    </div>
+    <!-- Duplicate for seamless loop -->
+    <div class="marquee-content" aria-hidden="true">
+      <span>🌾 Soil Testing</span>
+      <span class="ms-dot">✦</span>
+      <span>🔬 Crop Health Assessment</span>
+      <span class="ms-dot">✦</span>
+      <span>📋 Nutrition Scheduling</span>
+      <span class="ms-dot">✦</span>
+      <span>🛡️ Pesticide Residue Testing</span>
+      <span class="ms-dot">✦</span>
+      <span>🎓 Organic Farming Training</span>
+      <span class="ms-dot">✦</span>
+      <span>🌿 Organic Millets</span>
+      <span class="ms-dot">✦</span>
+      <span>♻️ Sustainable Agriculture</span>
+      <span class="ms-dot">✦</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     SERVICES
+═══════════════════════════════════════ -->
+<section class="section services-section" id="services">
+  <div class="container">
+    <div class="sec-header" data-reveal>
+      <span class="sec-eyebrow">What We Offer</span>
+      <h2 class="sec-title">Our <em>Services</em></h2>
+      <p class="sec-sub">Science-based solutions for healthy, productive and sustainable farms across India</p>
+    </div>
+
+    <div class="services-grid">
+
+      <!-- Service 1 -->
+      <div class="svc-card" data-reveal data-delay="0">
+        <div class="svc-num">01</div>
+        <div class="svc-icon-wrap" style="--ic:#e8f5e9;--icol:#2e7d32">
+          <i class="fas fa-seedling"></i>
+        </div>
+        <div class="svc-badge">16 Parameters</div>
+        <h3 class="svc-title">Soil Testing</h3>
+        <p class="svc-desc">Comprehensive analysis of pH, EC, N-P-K, Organic Carbon, micronutrients, soil texture and cation exchange capacity with detailed crop-wise nutrient recommendations.</p>
+        <ul class="svc-list">
+          <li>pH, EC, N, P, K, S, Ca, Mg analysis</li>
+          <li>Organic Carbon &amp; micronutrients</li>
+          <li>Crop-wise nutrient report</li>
+        </ul>
+        <a href="#contact" class="svc-link">
+          Book Test <i class="fas fa-arrow-right"></i>
+        </a>
+        <div class="svc-hover-bg" style="--hbg:linear-gradient(135deg,#e8f5e9,#c8e6c9)"></div>
+      </div>
+
+      <!-- Service 2 -->
+      <div class="svc-card" data-reveal data-delay="100">
+        <div class="svc-num">02</div>
+        <div class="svc-icon-wrap" style="--ic:#e3f2fd;--icol:#1565c0">
+          <i class="fas fa-microscope"></i>
+        </div>
+        <div class="svc-badge">Early Detection</div>
+        <h3 class="svc-title">Crop Health Assessment</h3>
+        <p class="svc-desc">Microscopic examination of leaves, roots and soil samples for early identification of pests, diseases, and beneficial organisms before major losses occur.</p>
+        <ul class="svc-list">
+          <li>Fungal, viral &amp; bacterial detection</li>
+          <li>Beneficial organism profiling</li>
+          <li>Targeted IPM protocols</li>
+        </ul>
+        <a href="#contact" class="svc-link">
+          Book Assessment <i class="fas fa-arrow-right"></i>
+        </a>
+        <div class="svc-hover-bg" style="--hbg:linear-gradient(135deg,#e3f2fd,#bbdefb)"></div>
+      </div>
+
+      <!-- Service 3 -->
+      <div class="svc-card" data-reveal data-delay="200">
+        <div class="svc-num">03</div>
+        <div class="svc-icon-wrap" style="--ic:#fff8e1;--icol:#e65100">
+          <i class="fas fa-calendar-check"></i>
+        </div>
+        <div class="svc-badge">Customized</div>
+        <h3 class="svc-title">Nutrition Scheduling</h3>
+        <p class="svc-desc">Season-wise nutrient and spraying schedules tailored for each crop and soil type, integrating Jeevamrit, Panchagavya and other organic inputs.</p>
+        <ul class="svc-list">
+          <li>Foliar &amp; soil application calendar</li>
+          <li>Jeevamrit &amp; Panchagavya plans</li>
+          <li>Season-wise management</li>
+        </ul>
+        <a href="#contact" class="svc-link">
+          Get Schedule <i class="fas fa-arrow-right"></i>
+        </a>
+        <div class="svc-hover-bg" style="--hbg:linear-gradient(135deg,#fff8e1,#ffecb3)"></div>
+      </div>
+
+      <!-- Service 4 -->
+      <div class="svc-card" data-reveal data-delay="300">
+        <div class="svc-num">04</div>
+        <div class="svc-icon-wrap" style="--ic:#fce4ec;--icol:#880e4f">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <div class="svc-badge">Safe Food</div>
+        <h3 class="svc-title">Pesticide Residue Testing</h3>
+        <p class="svc-desc">Accurate testing of fruits, vegetables and food products for harmful pesticide residues — ensuring food safety, export compliance and organic certification support.</p>
+        <ul class="svc-list">
+          <li>Fruits, vegetables &amp; grains</li>
+          <li>Export compliance testing</li>
+          <li>Organic certification support</li>
+        </ul>
+        <a href="#contact" class="svc-link">
+          Book Test <i class="fas fa-arrow-right"></i>
+        </a>
+        <div class="svc-hover-bg" style="--hbg:linear-gradient(135deg,#fce4ec,#f8bbd0)"></div>
+      </div>
+
+      <!-- Service 5 — Wide -->
+      <div class="svc-card svc-card--wide" data-reveal data-delay="400">
+        <div class="svc-num">05</div>
+        <div class="svc-icon-wrap" style="--ic:#f3e5f5;--icol:#4a148c">
+          <i class="fas fa-chalkboard-teacher"></i>
+        </div>
+        <div class="svc-badge">10,000+ Trained</div>
+        <h3 class="svc-title">Organic Farming Training</h3>
+        <p class="svc-desc">Hands-on training for farmers, FPOs, NGOs and institutions on organic farming, sustainable agriculture and climate-resilient farming systems across India.</p>
+        <div class="svc-topics">
+          <span>Soil–Plant–Microbe Interactions</span>
+          <span>Agroecology</span>
+          <span>Cover Crops &amp; Mulching</span>
+          <span>Organic Nutrient Management</span>
+          <span>Climate-Resilient Systems</span>
+          <span>Capacity Building</span>
+        </div>
+        <a href="#contact" class="svc-link">
+          Enroll Now <i class="fas fa-arrow-right"></i>
+        </a>
+        <div class="svc-hover-bg" style="--hbg:linear-gradient(135deg,#f3e5f5,#e1bee7)"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     STATS BAND
+═══════════════════════════════════════ -->
+<div class="stats-band">
+  <div class="container">
+    <div class="stats-row">
+      <div class="sb-item" data-reveal>
+        <span class="sb-num counter" data-target="10000">0</span><span class="sb-suf">+</span>
+        <span class="sb-label">Farmers &amp; Institutions Trained</span>
+      </div>
+      <div class="sb-div"></div>
+      <div class="sb-item" data-reveal data-delay="100">
+        <span class="sb-num counter" data-target="50">0</span><span class="sb-suf">+</span>
+        <span class="sb-label">Research Publications</span>
+      </div>
+      <div class="sb-div"></div>
+      <div class="sb-item" data-reveal data-delay="200">
+        <span class="sb-num counter" data-target="16">0</span><span class="sb-suf">+</span>
+        <span class="sb-label">Soil Parameters Tested</span>
+      </div>
+      <div class="sb-div"></div>
+      <div class="sb-item" data-reveal data-delay="300">
+        <span class="sb-num counter" data-target="100">0</span><span class="sb-suf">%</span>
+        <span class="sb-label">Organic &amp; Chemical-Free</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PRODUCTS
+═══════════════════════════════════════ -->
+<section class="section products-section" id="products">
+  <div class="container">
+    <div class="products-layout">
+      <!-- Left sticky text -->
+      <div class="pl-text-col" data-reveal>
+        <span class="sec-eyebrow">Farm Fresh</span>
+        <h2 class="sec-title">Organic <em>Millets</em></h2>
+        <p class="pl-body">We cultivate and supply premium millets grown using 100% organic practices — rich in nutrition, gentle on the planet, and direct from field to your table.</p>
+        <div class="pl-cert">
+          <div class="cert-badge"><i class="fas fa-leaf"></i> 100% Organic</div>
+          <div class="cert-badge"><i class="fas fa-seedling"></i> Zero Chemicals</div>
+          <div class="cert-badge"><i class="fas fa-recycle"></i> Sustainable</div>
+        </div>
+        <a href="#contact" class="ha-primary mt-32">
+          <span>Enquire Products</span>
+          <div class="btn-arrow"><i class="fas fa-arrow-right"></i></div>
+        </a>
+      </div>
+
+      <!-- Right cards -->
+      <div class="pl-cards-col">
+        <div class="millet-card" data-reveal data-delay="0">
+          <div class="mc-emoji">🌾</div>
+          <div class="mc-body">
+            <div class="mc-top">
+              <h4>Ragi</h4>
+              <span class="mc-eng">Finger Millet</span>
+            </div>
+            <p>Rich in calcium and iron. Excellent for bone health and diabetes management.</p>
+            <div class="mc-tags">
+              <span>High Calcium</span><span>Gluten-Free</span><span>Antioxidant</span>
+            </div>
+          </div>
+          <div class="mc-arrow"><i class="fas fa-arrow-right"></i></div>
+        </div>
+
+        <div class="millet-card" data-reveal data-delay="100">
+          <div class="mc-emoji">🌿</div>
+          <div class="mc-body">
+            <div class="mc-top">
+              <h4>Bajra</h4>
+              <span class="mc-eng">Pearl Millet</span>
+            </div>
+            <p>High protein energy grain. Drought-resistant and perfect for arid regions.</p>
+            <div class="mc-tags">
+              <span>High Protein</span><span>Energy Rich</span><span>Iron-Dense</span>
+            </div>
+          </div>
+          <div class="mc-arrow"><i class="fas fa-arrow-right"></i></div>
+        </div>
+
+        <div class="millet-card" data-reveal data-delay="200">
+          <div class="mc-emoji">🌱</div>
+          <div class="mc-body">
+            <div class="mc-top">
+              <h4>Sorghum</h4>
+              <span class="mc-eng">Jowar</span>
+            </div>
+            <p>Versatile and water-efficient with high fibre content. Great for digestion.</p>
+            <div class="mc-tags">
+              <span>High Fibre</span><span>Water-Efficient</span><span>Vegan</span>
+            </div>
+          </div>
+          <div class="mc-arrow"><i class="fas fa-arrow-right"></i></div>
+        </div>
+
+        <div class="millet-card" data-reveal data-delay="300">
+          <div class="mc-emoji">🌻</div>
+          <div class="mc-body">
+            <div class="mc-top">
+              <h4>Foxtail Millet</h4>
+              <span class="mc-eng">Korralu</span>
+            </div>
+            <p>Low glycemic index — ideal for diabetics. Rich in dietary fibre and minerals.</p>
+            <div class="mc-tags">
+              <span>Low GI</span><span>Mineral Rich</span><span>Fibre Dense</span>
+            </div>
+          </div>
+          <div class="mc-arrow"><i class="fas fa-arrow-right"></i></div>
+        </div>
+
+        <div class="millet-card millet-card--more" data-reveal data-delay="400">
+          <div class="mc-emoji">✨</div>
+          <div class="mc-body">
+            <div class="mc-top">
+              <h4>Heritage Varieties</h4>
+              <span class="mc-eng">And More…</span>
+            </div>
+            <p>Little Millet, Kodo Millet, Barnyard Millet and other traditional grains.</p>
+            <div class="mc-tags">
+              <span>Heritage</span><span>Traditional</span><span>Superfood</span>
+            </div>
+          </div>
+          <div class="mc-arrow"><i class="fas fa-arrow-right"></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     PROCESS
+═══════════════════════════════════════ -->
+<section class="section process-section" id="process">
+  <div class="container">
+    <div class="sec-header" data-reveal>
+      <span class="sec-eyebrow">How It Works</span>
+      <h2 class="sec-title">Our <em>Process</em></h2>
+      <p class="sec-sub">From soil to harvest — a simple, thorough, science-driven journey</p>
+    </div>
+
+    <div class="process-grid">
+      <div class="proc-step" data-reveal data-delay="0">
+        <div class="ps-head">
+          <div class="ps-num">01</div>
+          <div class="ps-icon"><i class="fas fa-map-marker-alt"></i></div>
+        </div>
+        <div class="ps-line"></div>
+        <h4>Sampling &amp; Field Testing</h4>
+        <p>On-site visit or sample collection from your farm with precise geo-tagging and field documentation.</p>
+        <div class="ps-tag">Farm Visit / Sample Kit</div>
+      </div>
+      <div class="proc-step" data-reveal data-delay="150">
+        <div class="ps-head">
+          <div class="ps-num">02</div>
+          <div class="ps-icon"><i class="fas fa-microscope"></i></div>
+        </div>
+        <div class="ps-line"></div>
+        <h4>Lab Analysis &amp; Microscopy</h4>
+        <p>Thorough 16-parameter soil analysis plus microscopy for pathogens and beneficial organisms.</p>
+        <div class="ps-tag">Precision Diagnostics</div>
+      </div>
+      <div class="proc-step" data-reveal data-delay="300">
+        <div class="ps-head">
+          <div class="ps-num">03</div>
+          <div class="ps-icon"><i class="fas fa-file-alt"></i></div>
+        </div>
+        <div class="ps-line"></div>
+        <h4>Detailed Report</h4>
+        <p>Comprehensive crop-specific report with actionable organic recommendations and input schedules.</p>
+        <div class="ps-tag">Expert Recommendations</div>
+      </div>
+      <div class="proc-step" data-reveal data-delay="450">
+        <div class="ps-head">
+          <div class="ps-num">04</div>
+          <div class="ps-icon ps-icon--last"><i class="fas fa-headset"></i></div>
+        </div>
+        <h4>Farmer Support</h4>
+        <p>Ongoing support, seasonal follow-ups and WhatsApp consultations to ensure implementation success.</p>
+        <div class="ps-tag">Follow-Up &amp; Support</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     WHY CHOOSE US
+═══════════════════════════════════════ -->
+<section class="section why-section">
+  <div class="container">
+    <div class="why-layout">
+      <div class="why-left" data-reveal>
+        <span class="sec-eyebrow">Our Advantage</span>
+        <h2 class="sec-title">Why Choose <em>Farmology?</em></h2>
+        <p class="why-body">We combine rigorous science with genuine farmer-first values to deliver solutions that work in the real world — your field, your crops, your livelihood.</p>
+        <a href="#contact" class="ha-primary mt-32">
+          <span>Start Today</span>
+          <div class="btn-arrow"><i class="fas fa-arrow-right"></i></div>
+        </a>
+      </div>
+      <div class="why-right">
+        <div class="why-card" data-reveal data-delay="0">
+          <div class="wc-icon"><i class="fas fa-chart-bar"></i></div>
+          <div class="wc-body">
+            <h4>Accurate &amp; Reliable Results</h4>
+            <p>Lab-certified testing with evidence-based interpretations and crop-specific guidance.</p>
+          </div>
+        </div>
+        <div class="why-card" data-reveal data-delay="100">
+          <div class="wc-icon"><i class="fas fa-user-graduate"></i></div>
+          <div class="wc-body">
+            <h4>Expert Agronomist Leadership</h4>
+            <p>Ph.D. agronomist with 50+ peer-reviewed publications and pan-India training impact.</p>
+          </div>
+        </div>
+        <div class="why-card" data-reveal data-delay="200">
+          <div class="wc-icon"><i class="fas fa-flask"></i></div>
+          <div class="wc-body">
+            <h4>On-Site &amp; Lab Diagnostics</h4>
+            <p>Flexible — we visit your farm or you send samples. Full support either way.</p>
+          </div>
+        </div>
+        <div class="why-card" data-reveal data-delay="300">
+          <div class="wc-icon"><i class="fas fa-leaf"></i></div>
+          <div class="wc-body">
+            <h4>100% Organic &amp; Sustainable</h4>
+            <p>Every recommendation prioritizes soil health, ecology and long-term farm vitality.</p>
+          </div>
+        </div>
+        <div class="why-card" data-reveal data-delay="400">
+          <div class="wc-icon"><i class="fas fa-tractor"></i></div>
+          <div class="wc-body">
+            <h4>Farmer-First Approach</h4>
+            <p>Serving individual farmers, FPOs, corporate farms and NGOs with equal commitment.</p>
+          </div>
+        </div>
+        <div class="why-card" data-reveal data-delay="500">
+          <div class="wc-icon"><i class="fas fa-cloud-sun"></i></div>
+          <div class="wc-body">
+            <h4>Climate-Resilient Focus</h4>
+            <p>Solutions designed for climate adaptation, livelihood security and sustainable futures.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     ABOUT
+═══════════════════════════════════════ -->
+<section class="section about-section" id="about">
+  <div class="container">
+    <div class="about-layout">
+      <!-- Image col -->
+      <div class="about-img-col" data-reveal>
+        <div class="about-img-frame">
+          <img src="dr-kasirao.jpg" alt="Dr. Gummadala Kasirao" class="about-photo"/ loading="lazy" decoding="async">
+          <!-- Overlay card -->
+          <div class="aif-card aif-card-tl">
+            <i class="fas fa-graduation-cap"></i>
+            <div>
+              <strong>Ph.D. Agronomy</strong>
+              <span>Organic Farming Specialist</span>
+            </div>
+          </div>
+          <div class="aif-card aif-card-br">
+            <i class="fas fa-book-open"></i>
+            <div>
+              <strong>50+ Publications</strong>
+              <span>Peer-reviewed research</span>
+            </div>
+          </div>
+          <!-- Decorative blob -->
+          <div class="aif-blob"></div>
+        </div>
+        <!-- Research links -->
+        <div class="research-links">
+          <a href="https://www.researchgate.net/profile/Gummadala-Kasirao" target="_blank" rel="noopener noreferrer" class="rl-btn rl-rg">
+            <i class="fas fa-graduation-cap"></i>
+            <div><strong>ResearchGate</strong><span>View Profile</span></div>
+            <i class="fas fa-external-link-alt rl-ext"></i>
+          </a>
+          <a href="https://scholar.google.com/citations?user=bhMuoc0AAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="rl-btn rl-gs">
+            <i class="fab fa-google"></i>
+            <div><strong>Google Scholar</strong><span>View Citations</span></div>
+            <i class="fas fa-external-link-alt rl-ext"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Text col -->
+      <div class="about-text-col" data-reveal data-delay="150">
+        <span class="sec-eyebrow">Meet the Expert</span>
+        <h2 class="sec-title">Dr. Gummadala <em>Kasirao</em></h2>
+        <div class="about-credential-row">
+          <span class="acr-badge"><i class="fas fa-circle-check"></i> Ph.D. Agronomy</span>
+          <span class="acr-badge"><i class="fas fa-circle-check"></i> Organic Farming</span>
+          <span class="acr-badge"><i class="fas fa-circle-check"></i> Sustainable Agriculture</span>
+        </div>
+
+        <p class="about-bio">Dr. Kasirao holds a Ph.D. in Agronomy with deep specialization in organic farming and sustainable agriculture. His research is rooted in <strong>soil–plant–microbe interactions</strong>, agroecology, organic nutrient management, cover crops, mulching and sustainable farming systems.</p>
+
+        <p class="about-bio">He has personally trained more than <strong>10,000 farmers, professionals and institutions</strong> across India on organic and sustainable agriculture practices, and has served as technical consultant for several NGOs on capacity-building initiatives.</p>
+
+        <p class="about-bio">Currently focused on sustainability in agriculture, livelihoods and <strong>climate-resilient farming systems</strong>. Author of <strong>50+ research publications</strong> in peer-reviewed agricultural journals.</p>
+
+        <div class="expertise-chips">
+          <span>🔬 Soil–Plant–Microbe Interactions</span>
+          <span>🌿 Agroecology</span>
+          <span>🌾 Organic Nutrient Management</span>
+          <span>🌱 Cover Crops &amp; Mulching</span>
+          <span>☁️ Climate-Resilient Farming</span>
+          <span>📚 Agricultural Research</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     CONTACT
+═══════════════════════════════════════ -->
+<section class="section contact-section" id="contact">
+  <div class="container">
+    <div class="contact-layout">
+      <!-- Left info panel -->
+      <div class="contact-info-col" data-reveal>
+        <span class="sec-eyebrow light">Get In Touch</span>
+        <h2 class="sec-title light">Let's Grow <em>Together</em></h2>
+        <p class="contact-tagline">Partner with Farmology for a healthier, more productive tomorrow. We respond within 24 hours.</p>
+
+        <div class="ci-items">
+          <a href="tel:+919398544652" class="ci-item">
+            <div class="ci-icon"><i class="fas fa-phone-alt"></i></div>
+            <div class="ci-body">
+              <span class="ci-label">Call / WhatsApp</span>
+              <strong>+91 93985 44652</strong>
+            </div>
+          </a>
+          <a href="mailto:farmology@gmail.com" class="ci-item">
+            <div class="ci-icon"><i class="fas fa-envelope"></i></div>
+            <div class="ci-body">
+              <span class="ci-label">Email</span>
+              <strong>farmology@gmail.com</strong>
+            </div>
+          </a>
+          <div class="ci-item">
+            <div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="ci-body">
+              <span class="ci-label">Service Mode</span>
+              <strong>On-Site · Field · Lab</strong>
+            </div>
+          </div>
+          <a href="https://wa.me/919398544652" target="_blank" rel="noopener noreferrer" class="ci-item ci-wa">
+            <div class="ci-icon" style="background:#25D366"><i class="fab fa-whatsapp"></i></div>
+            <div class="ci-body">
+              <span class="ci-label">WhatsApp Chat</span>
+              <strong>Message Us Directly</strong>
+            </div>
+          </a>
+        </div>
+
+        <div class="ci-research">
+          <p>Research Profiles</p>
+          <div class="cir-links">
+            <a href="https://www.researchgate.net/profile/Gummadala-Kasirao" target="_blank" rel="noopener noreferrer">
+              <i class="fas fa-graduation-cap"></i> ResearchGate
+            </a>
+            <a href="https://scholar.google.com/citations?user=bhMuoc0AAAAJ&hl=en" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-google"></i> Google Scholar
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right form -->
+      <div class="contact-form-col" data-reveal data-delay="150">
+        <div class="form-card" id="formCard">
+          <h3>Send a Message</h3>
+          <form id="contactForm" class="contact-form" novalidate autocomplete="on">
+            <div class="fg-row">
+              <div class="fg">
+                <label>Full Name *</label>
+                <input type="text" name="name" placeholder="Your Name" required/>
+              </div>
+              <div class="fg">
+                <label>Phone *</label>
+                <input type="tel" name="phone" placeholder="+91 XXXXX XXXXX" required/>
+              </div>
+            </div>
+            <div class="fg">
+              <label>Email</label>
+              <input type="email" name="email" placeholder="you@example.com"/>
+            </div>
+            <div class="fg">
+              <label>Service Interested In</label>
+              <select name="service">
+                <option value="">— Select Service —</option>
+                <option>Soil Testing</option>
+                <option>Crop Health Assessment</option>
+                <option>Nutrition Scheduling</option>
+                <option>Pesticide Residue Testing</option>
+                <option>Organic Farming Training</option>
+                <option>Millet Products</option>
+                <option>General Enquiry</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label>Message</label>
+              <textarea name="message" rows="4" placeholder="Tell us about your farm and requirements…"></textarea>
+            </div>
+            <button type="submit" class="form-submit">
+              <i class="fas fa-paper-plane"></i>
+              <span>Send Message</span>
+              <div class="fs-ripple"></div>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="ft-grid">
+        <div class="ft-brand">
+          <div class="footer-logo">
+            <span>🌿</span>
+            <span class="fl-name">Farm<span class="fl-o">o</span>logy™</span>
+          </div>
+          <p class="ft-slogan">The Science Behind Better Farming</p>
+          <p class="ft-desc">Providing precision diagnostics and organic farming solutions to help Indian farmers grow healthier crops sustainably and profitably.</p>
+          <div class="ft-socials">
+            <a href="https://wa.me/919398544652" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.researchgate.net/profile/Gummadala-Kasirao" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate"><i class="fas fa-graduation-cap"></i></a>
+            <a href="https://scholar.google.com/citations?user=bhMuoc0AAAAJ&hl=en" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar"><i class="fab fa-google"></i></a>
+          </div>
+        </div>
+        <div class="ft-col">
+          <h5>Services</h5>
+          <ul>
+            <li><a href="#services">Soil Testing</a></li>
+            <li><a href="#services">Crop Health Assessment</a></li>
+            <li><a href="#services">Nutrition Scheduling</a></li>
+            <li><a href="#services">Pesticide Residue Testing</a></li>
+            <li><a href="#services">Organic Farming Training</a></li>
+          </ul>
+        </div>
+        <div class="ft-col">
+          <h5>Products</h5>
+          <ul>
+            <li><a href="#products">Ragi (Finger Millet)</a></li>
+            <li><a href="#products">Bajra (Pearl Millet)</a></li>
+            <li><a href="#products">Sorghum (Jowar)</a></li>
+            <li><a href="#products">Foxtail Millet</a></li>
+            <li><a href="#products">Heritage Varieties</a></li>
+          </ul>
+        </div>
+        <div class="ft-col">
+          <h5>Contact</h5>
+          <ul>
+            <li><a href="tel:+919398544652"><i class="fas fa-phone"></i> +91 93985 44652</a></li>
+            <li><a href="mailto:farmology@gmail.com"><i class="fas fa-envelope"></i> farmology@gmail.com</a></li>
+            <li><span><i class="fas fa-map-marker-alt"></i> On-Site · Field · Lab</span></li>
+            <li><a href="https://wa.me/919398544652" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp Chat</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; 2024 Farmology™ · Dr. Gummadala Kasirao · All Rights Reserved</p>
+      <p>🌾 Healthy Soil · Healthy Crops · Better Yields · Sustainable Future</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Scroll to top -->
+<button class="scroll-top-btn" id="scrollTopBtn" aria-label="Back to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>
