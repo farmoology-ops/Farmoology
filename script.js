@@ -1,5 +1,5 @@
 /* ================================================================
-   FARMOLOGY — Secure & Optimised JavaScript
+   FARMOOLOGY — Secure & Optimised JavaScript
    Security: input validation, XSS prevention, rate-limiting,
              null-checks, error boundaries, sanitisation
    Performance: passive listeners, requestAnimationFrame,
@@ -386,7 +386,7 @@ if (contactForm && formCard) {
         <div class="form-success" role="alert" aria-live="polite">
           <div class="form-success-icon" aria-hidden="true">🌿</div>
           <h3>Message Received!</h3>
-          <p>Thank you for reaching out to Farmology.<br/>
+          <p>Thank you for reaching out to Farmoology.<br/>
              Dr. Kasirao's team will respond within 24 hours.</p>
           <a href="https://wa.me/919398544652"
              target="_blank"
