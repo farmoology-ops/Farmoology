@@ -531,7 +531,7 @@ async function initOfferNotifications() {
   // Tests all common filenames and formats
   const candidateNames = [
     // Standard names
-    'offers/offer1.jpg', 'offers/offer1.png', 'offers/offer1.jpeg', 'offers/offer1.webp',
+    'offers/Capture.PNG', 'offers/Capture.png', 'offers/capture.png', 'offers/image.png', 'offers/photo.png', 'offers/offer1.jpg', 'offers/offer1.png', 'offers/offer1.jpeg', 'offers/offer1.webp',
     'offers/offer.jpg', 'offers/offer.png', 'offers/offer.jpeg', 'offers/offer.webp',
     // Festival & event names
     'offers/festival.jpg', 'offers/festival.png', 'offers/festival.jpeg', 'offers/festival.webp',
