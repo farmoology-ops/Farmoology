@@ -514,13 +514,29 @@ async function initOfferNotifications() {
   let currentIndex = 0;
   const cacheBuster = '?v=' + Date.now();
 
+  const probe = (src) => new Promise(resolve => {
+    if (!src) return resolve(null);
+    const img = new Image();
+    img.onload = () => resolve(src);
+    img.onerror = () => resolve(null);
+    const cleanSrc = encodeURI(src);
+    img.src = cleanSrc + (cleanSrc.includes('?') ? '&v=' : '?v=') + Date.now();
+  });
+
   // 1. Try to read from offers/offers.json if available
   try {
     const res = await fetch('offers/offers.json' + cacheBuster, { cache: 'no-cache' });
     if (res.ok) {
       const data = await res.json();
       if (data && data.enabled !== false && Array.isArray(data.offers)) {
-        offersList = data.offers.filter(o => o && o.active !== false && o.image);
+        for (const o of data.offers) {
+          if (o && o.active !== false && o.image) {
+            const verified = await probe(o.image);
+            if (verified) {
+              offersList.push(o);
+            }
+          }
+        }
       }
     }
   } catch (err) {
@@ -530,44 +546,53 @@ async function initOfferNotifications() {
   // 2. Comprehensive Auto-Detection of images in offers/ folder:
   // Tests all common filenames and formats
   const candidateNames = [
-    // Standard names
-    'offers/Capture.PNG', 'offers/Capture.png', 'offers/capture.png', 'offers/image.png', 'offers/photo.png', 'offers/offer1.jpg', 'offers/offer1.png', 'offers/offer1.jpeg', 'offers/offer1.webp',
+    // Standard names & user uploaded formats
+    'offers/Soil offer.png', 'offers/Soil%20offer.png', 'offers/soil.png', 'offers/soil-offer.png',
     'offers/offer.jpg', 'offers/offer.png', 'offers/offer.jpeg', 'offers/offer.webp',
-    // Festival & event names
     'offers/festival.jpg', 'offers/festival.png', 'offers/festival.jpeg', 'offers/festival.webp',
-    'offers/diwali.jpg', 'offers/diwali.png', 'offers/pongal.jpg', 'offers/sankranti.jpg',
-    // Banners, flyers, posters
     'offers/flyer.jpg', 'offers/flyer.png', 'offers/flyer.jpeg', 'offers/flyer.webp',
     'offers/banner.jpg', 'offers/banner.png', 'offers/banner.jpeg', 'offers/banner.webp',
     'offers/poster.jpg', 'offers/poster.png', 'offers/poster.jpeg', 'offers/poster.webp',
+    'offers/diwali.jpg', 'offers/diwali.png', 'offers/pongal.jpg', 'offers/sankranti.jpg',
     'offers/notification.jpg', 'offers/notification.png', 'offers/notification.jpeg',
     'offers/discount.jpg', 'offers/discount.png', 'offers/discount.jpeg',
-    // Additional numbered offers
-    'offers/offer2.jpg', 'offers/offer2.png', 'offers/offer2.jpeg',
-    'offers/offer3.jpg', 'offers/offer3.png', 'offers/offer3.jpeg'
+    'offers/image.png', 'offers/photo.png', 'offers/offer1.jpg', 'offers/offer1.png',
+    'offers/offer2.jpg', 'offers/offer2.png', 'offers/offer3.jpg'
   ];
 
-  const probe = (src) => new Promise(resolve => {
-    const img = new Image();
-    img.onload = () => resolve(src);
-    img.onerror = () => resolve(null);
-    img.src = src + cacheBuster;
-  });
+  // Also query GitHub API to discover ANY image uploaded to offers/ folder
+  try {
+    const ghRes = await fetch('https://api.github.com/repos/farmoology-ops/Farmoology/contents/offers?ref=main&t=' + Date.now(), { cache: 'no-cache' });
+    if (ghRes.ok) {
+      const files = await ghRes.json();
+      if (Array.isArray(files)) {
+        files.forEach(f => {
+          if (f.name && /\.(png|jpe?g|webp|gif|svg)$/i.test(f.name)) {
+            candidateNames.unshift('offers/' + f.name);
+          }
+        });
+      }
+    }
+  } catch (err) {
+    // API rate limit / offline fallback
+  }
 
-  const probed = await Promise.all(candidateNames.map(probe));
-  const detectedImages = [...new Set(probed.filter(Boolean))];
+  const probed = await Promise.all([...new Set(candidateNames)].map(probe));
+  const detectedImages = probed.filter(Boolean);
 
   // Merge detected images if not already in offersList
   if (detectedImages.length > 0) {
-    const existingImgs = new Set(offersList.map(o => o.image.split('?')[0]));
+    const existingImgs = new Set(offersList.map(o => decodeURI(o.image.split('?')[0]).toLowerCase()));
     detectedImages.forEach(imgSrc => {
-      if (!existingImgs.has(imgSrc)) {
+      const cleanImg = decodeURI(imgSrc.split('?')[0]).toLowerCase();
+      if (!existingImgs.has(cleanImg)) {
+        existingImgs.add(cleanImg);
         offersList.push({
           image: imgSrc,
           title: '',
           subtitle: '',
-          badge: 'Festive Offer 🌿',
-          link: 'https://wa.me/919398544652?text=Hello%20Farmoology,%20I%20saw%20your%20Festival%20Offer%20and%20would%20like%20details!',
+          badge: 'Special Offer 🌿',
+          link: 'https://wa.me/919398544652?text=Hello%20Farmoology,%20I%20am%20interested%20in%20your%20Special%20Offer!',
           buttonText: 'Claim Offer on WhatsApp'
         });
       }
@@ -584,7 +609,8 @@ async function initOfferNotifications() {
     currentIndex = idx;
 
     const offer = offersList[currentIndex];
-    const imgSrc = offer.image.includes('?') ? offer.image : offer.image + cacheBuster;
+    const cleanSrc = encodeURI(offer.image);
+    const imgSrc = cleanSrc.includes('?') ? cleanSrc : cleanSrc + cacheBuster;
     offerImage.src = imgSrc;
 
     const waLink = offer.link || 'https://wa.me/919398544652?text=Hello%20Farmoology,%20I%20saw%20your%20Special%20Offer%20and%20would%20like%20details!';
