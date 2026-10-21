@@ -485,17 +485,17 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   }
 }
 
-
 /* ────────────────────────────────────────────────────────────────
-   OFFERS & NOTIFICATIONS SYSTEM
-   Loads from offers/offers.json or auto-detects offers/offer1.jpg etc.
+   OFFERS & FESTIVAL POPUP NOTIFICATION SYSTEM
+   Auto-detects ANY image placed in the offers/ folder, or reads offers/offers.json
 ──────────────────────────────────────────────────────────────── */
 async function initOfferNotifications() {
   const offerModal      = document.getElementById('offerModal');
   const offerBackdrop   = document.getElementById('offerBackdrop');
   const offerCloseBtn   = document.getElementById('offerCloseBtn');
-  const offerDismissBtn = document.getElementById('offerDismissBtn');
   const offerImage      = document.getElementById('offerImage');
+  const offerImageLink  = document.getElementById('offerImageLink');
+  const offerTextWrap   = document.getElementById('offerTextWrap');
   const offerTitle      = document.getElementById('offerTitle');
   const offerSubtitle   = document.getElementById('offerSubtitle');
   const offerBadgeText  = document.getElementById('offerBadgeText');
@@ -512,10 +512,11 @@ async function initOfferNotifications() {
 
   let offersList = [];
   let currentIndex = 0;
+  const cacheBuster = '?v=' + Date.now();
 
-  // 1. Try to load from offers/offers.json
+  // 1. Try to read from offers/offers.json if available
   try {
-    const res = await fetch('offers/offers.json', { cache: 'no-cache' });
+    const res = await fetch('offers/offers.json' + cacheBuster, { cache: 'no-cache' });
     if (res.ok) {
       const data = await res.json();
       if (data && data.enabled !== false && Array.isArray(data.offers)) {
@@ -523,80 +524,125 @@ async function initOfferNotifications() {
       }
     }
   } catch (err) {
-    // If fetch fails (e.g. file protocol), fallback to image probing
+    // Continue to automatic image detection
   }
 
-  // 2. If no offers from JSON, auto-probe candidate image filenames in offers/
-  if (offersList.length === 0) {
-    const candidateFiles = [
-      'offers/offer1.jpg',
-      'offers/offer1.png',
-      'offers/offer2.jpg',
-      'offers/offer2.png',
-      'offers/notification.jpg',
-      'offers/notification.png'
-    ];
+  // 2. Comprehensive Auto-Detection of images in offers/ folder:
+  // Tests all common filenames and formats
+  const candidateNames = [
+    // Standard names
+    'offers/offer1.jpg', 'offers/offer1.png', 'offers/offer1.jpeg', 'offers/offer1.webp',
+    'offers/offer.jpg', 'offers/offer.png', 'offers/offer.jpeg', 'offers/offer.webp',
+    // Festival & event names
+    'offers/festival.jpg', 'offers/festival.png', 'offers/festival.jpeg', 'offers/festival.webp',
+    'offers/diwali.jpg', 'offers/diwali.png', 'offers/pongal.jpg', 'offers/sankranti.jpg',
+    // Banners, flyers, posters
+    'offers/flyer.jpg', 'offers/flyer.png', 'offers/flyer.jpeg', 'offers/flyer.webp',
+    'offers/banner.jpg', 'offers/banner.png', 'offers/banner.jpeg', 'offers/banner.webp',
+    'offers/poster.jpg', 'offers/poster.png', 'offers/poster.jpeg', 'offers/poster.webp',
+    'offers/notification.jpg', 'offers/notification.png', 'offers/notification.jpeg',
+    'offers/discount.jpg', 'offers/discount.png', 'offers/discount.jpeg',
+    // Additional numbered offers
+    'offers/offer2.jpg', 'offers/offer2.png', 'offers/offer2.jpeg',
+    'offers/offer3.jpg', 'offers/offer3.png', 'offers/offer3.jpeg'
+  ];
 
-    const probe = (src) => new Promise(resolve => {
-      const img = new Image();
-      img.onload = () => resolve(src);
-      img.onerror = () => resolve(null);
-      img.src = src + '?t=' + Date.now();
+  const probe = (src) => new Promise(resolve => {
+    const img = new Image();
+    img.onload = () => resolve(src);
+    img.onerror = () => resolve(null);
+    img.src = src + cacheBuster;
+  });
+
+  const probed = await Promise.all(candidateNames.map(probe));
+  const detectedImages = [...new Set(probed.filter(Boolean))];
+
+  // Merge detected images if not already in offersList
+  if (detectedImages.length > 0) {
+    const existingImgs = new Set(offersList.map(o => o.image.split('?')[0]));
+    detectedImages.forEach(imgSrc => {
+      if (!existingImgs.has(imgSrc)) {
+        offersList.push({
+          image: imgSrc,
+          title: '',
+          subtitle: '',
+          badge: 'Festive Offer 🌿',
+          link: 'https://wa.me/919398544652?text=Hello%20Farmoology,%20I%20saw%20your%20Festival%20Offer%20and%20would%20like%20details!',
+          buttonText: 'Claim Offer on WhatsApp'
+        });
+      }
     });
-
-    const results = await Promise.all(candidateFiles.map(probe));
-    const foundImages = [...new Set(results.filter(Boolean))];
-
-    if (foundImages.length > 0) {
-      offersList = foundImages.map(src => ({
-        image: src,
-        title: 'Special Offer & Announcement 🌿',
-        subtitle: 'Contact Dr. Kasirao for personalized organic farming guidance & diagnostic services.',
-        badge: 'Seasonal Offer',
-        link: 'https://wa.me/919398544652?text=Hello%20Farmoology,%20I%20saw%20your%20offer%20and%20would%20like%20details!',
-        buttonText: 'Claim Offer on WhatsApp'
-      }));
-    }
   }
 
-  // If no offer photos exist, keep modal and floating button hidden
+  // If no offer photos exist, keep everything hidden
   if (offersList.length === 0) return;
 
-  // Render offer at given index
+  // Render the current offer flyer
   function renderOffer(idx) {
     if (idx < 0) idx = offersList.length - 1;
     if (idx >= offersList.length) idx = 0;
     currentIndex = idx;
 
     const offer = offersList[currentIndex];
-    offerImage.src = offer.image;
-    offerTitle.textContent = offer.title || 'Special Announcement 🌿';
-    offerSubtitle.textContent = offer.subtitle || '';
-    if (offerBadgeText) offerBadgeText.textContent = offer.badge || 'New Notification';
-    if (offerActionBtn) {
-      offerActionBtn.href = offer.link || 'https://wa.me/919398544652';
-      if (offerActionText) offerActionText.textContent = offer.buttonText || 'Claim Offer on WhatsApp';
+    const imgSrc = offer.image.includes('?') ? offer.image : offer.image + cacheBuster;
+    offerImage.src = imgSrc;
+
+    const waLink = offer.link || 'https://wa.me/919398544652?text=Hello%20Farmoology,%20I%20saw%20your%20Special%20Offer%20and%20would%20like%20details!';
+    if (offerImageLink) offerImageLink.href = waLink;
+    if (offerActionBtn) offerActionBtn.href = waLink;
+
+    if (offerBadgeText) {
+      offerBadgeText.textContent = offer.badge || 'Festive Offer 🌿';
+    }
+    if (offerActionText) {
+      offerActionText.textContent = offer.buttonText || 'Claim Offer on WhatsApp';
     }
 
+    // Only show text if explicitly provided
+    if (offer.title || offer.subtitle) {
+      if (offerTextWrap) offerTextWrap.style.display = 'block';
+      if (offerTitle) offerTitle.textContent = offer.title || '';
+      if (offerSubtitle) offerSubtitle.textContent = offer.subtitle || '';
+    } else {
+      if (offerTextWrap) offerTextWrap.style.display = 'none';
+    }
+
+    // Dots for multi-offer navigation
     if (offerDots && offersList.length > 1) {
       offerDots.innerHTML = offersList.map((_, i) =>
         `<span class="offer-dot ${i === currentIndex ? 'active' : ''}" data-idx="${i}"></span>`
       ).join('');
       offerDots.querySelectorAll('.offer-dot').forEach(dot => {
-        dot.onclick = () => renderOffer(parseInt(dot.dataset.idx, 10));
+        dot.onclick = (e) => {
+          e.stopPropagation();
+          renderOffer(parseInt(dot.dataset.idx, 10));
+        };
       });
     }
   }
 
+  // Multi-offer navigation buttons
   if (offersList.length > 1 && offerNavBtns) {
     offerNavBtns.style.display = 'flex';
-    if (offerPrevBtn) offerPrevBtn.onclick = () => renderOffer(currentIndex - 1);
-    if (offerNextBtn) offerNextBtn.onclick = () => renderOffer(currentIndex + 1);
+    if (offerPrevBtn) {
+      offerPrevBtn.onclick = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        renderOffer(currentIndex - 1);
+      };
+    }
+    if (offerNextBtn) {
+      offerNextBtn.onclick = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        renderOffer(currentIndex + 1);
+      };
+    }
   }
 
   renderOffer(0);
 
-  // Show floating pill button
+  // Show floating offer trigger pill
   if (floatingBtn) {
     floatingBtn.style.display = 'inline-flex';
     if (floatingCount) floatingCount.textContent = offersList.length;
@@ -613,11 +659,9 @@ async function initOfferNotifications() {
     offerModal.classList.remove('active');
     offerModal.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('offer-modal-open');
-    sessionStorage.setItem('farmoology_offer_seen', 'true');
   }
 
   if (offerCloseBtn) offerCloseBtn.onclick = closeModal;
-  if (offerDismissBtn) offerDismissBtn.onclick = closeModal;
   if (offerBackdrop) offerBackdrop.onclick = closeModal;
 
   document.addEventListener('keydown', (e) => {
@@ -626,10 +670,8 @@ async function initOfferNotifications() {
     }
   });
 
-  // Auto-open after 1.5 seconds if visitor hasn't dismissed it in this session
-  if (!sessionStorage.getItem('farmoology_offer_seen')) {
-    setTimeout(openModal, 1500);
-  }
+  // Open smoothly after 1.2s
+  setTimeout(openModal, 1200);
 }
 
 // Initialize on page load

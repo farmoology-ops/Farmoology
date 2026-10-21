@@ -1,33 +1,32 @@
 ===================================================================
-FARMOOLOGY - HOW TO ADD OFFERS & NOTIFICATIONS
+FARMOOLOGY - FESTIVAL & SPECIAL OFFERS POPUP GUIDE
 ===================================================================
 
-You have two very easy ways to show an offer or notification on your website:
+Just like top e-commerce websites (Amazon, Flipkart, Swiggy):
+Whenever a festival, seasonal sale, or new batch training comes:
 
 -------------------------------------------------------------------
-METHOD 1 (EASIEST - ZERO CODE):
+HOW TO DISPLAY YOUR FESTIVAL / OFFER FLYER:
 -------------------------------------------------------------------
-1. Save your offer, discount, or announcement photo in this folder.
-2. Name it:
-      offer1.jpg   (or offer1.png)
-   or offer2.jpg
-   or notification.jpg
-3. That's it! When anyone visits your website, an attractive popup
-   notification will automatically appear showing your offer photo
-   with a direct WhatsApp enquiry button.
+1. Drop your flyer or poster picture into this 'offers' folder.
+2. You can name it ANY of these:
+   - offer.jpg      (or offer.png)
+   - festival.jpg   (or festival.png)
+   - flyer.jpg      (or flyer.png)
+   - banner.jpg     (or banner.png)
+   - offer1.jpg     (or offer1.png)
 
-To remove an offer:
-- Just delete or rename the image file in this folder.
+3. THAT IS ALL!
+   - Your full flyer/poster will appear as a stunning festival popup
+     when visitors open the website!
+   - Clicking directly on the flyer poster opens WhatsApp to chat
+     and claim the offer.
+   - A floating [🎁 Special Offer] bell button also appears on the
+     bottom-left of the site so visitors can view it anytime!
 
 -------------------------------------------------------------------
-METHOD 2 (CUSTOM TITLE & LINK):
+HOW TO REMOVE AN OFFER:
 -------------------------------------------------------------------
-Open the file 'offers.json' in this folder:
-- Set "enabled": true (or false to hide notifications)
-- Put your image name (e.g. "offers/offer1.jpg")
-- Customize the title, subtitle, or button text
-- Add your WhatsApp message link
-
-When you are ready to publish online:
-- Push the changes to GitHub, and it will be live immediately!
+Simply delete the image file from this folder, and the popup
+will disappear completely from the website.
 ===================================================================
