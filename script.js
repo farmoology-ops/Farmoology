@@ -484,3 +484,157 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     heroContent.style.opacity   = '1';
   }
 }
+
+
+/* ────────────────────────────────────────────────────────────────
+   OFFERS & NOTIFICATIONS SYSTEM
+   Loads from offers/offers.json or auto-detects offers/offer1.jpg etc.
+──────────────────────────────────────────────────────────────── */
+async function initOfferNotifications() {
+  const offerModal      = document.getElementById('offerModal');
+  const offerBackdrop   = document.getElementById('offerBackdrop');
+  const offerCloseBtn   = document.getElementById('offerCloseBtn');
+  const offerDismissBtn = document.getElementById('offerDismissBtn');
+  const offerImage      = document.getElementById('offerImage');
+  const offerTitle      = document.getElementById('offerTitle');
+  const offerSubtitle   = document.getElementById('offerSubtitle');
+  const offerBadgeText  = document.getElementById('offerBadgeText');
+  const offerActionBtn  = document.getElementById('offerActionBtn');
+  const offerActionText = document.getElementById('offerActionText');
+  const floatingBtn     = document.getElementById('floatingOfferBtn');
+  const floatingCount   = document.getElementById('floatingOfferCount');
+  const offerNavBtns    = document.getElementById('offerNavBtns');
+  const offerPrevBtn    = document.getElementById('offerPrevBtn');
+  const offerNextBtn    = document.getElementById('offerNextBtn');
+  const offerDots       = document.getElementById('offerDots');
+
+  if (!offerModal || !offerImage) return;
+
+  let offersList = [];
+  let currentIndex = 0;
+
+  // 1. Try to load from offers/offers.json
+  try {
+    const res = await fetch('offers/offers.json', { cache: 'no-cache' });
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.enabled !== false && Array.isArray(data.offers)) {
+        offersList = data.offers.filter(o => o && o.active !== false && o.image);
+      }
+    }
+  } catch (err) {
+    // If fetch fails (e.g. file protocol), fallback to image probing
+  }
+
+  // 2. If no offers from JSON, auto-probe candidate image filenames in offers/
+  if (offersList.length === 0) {
+    const candidateFiles = [
+      'offers/offer1.jpg',
+      'offers/offer1.png',
+      'offers/offer2.jpg',
+      'offers/offer2.png',
+      'offers/notification.jpg',
+      'offers/notification.png'
+    ];
+
+    const probe = (src) => new Promise(resolve => {
+      const img = new Image();
+      img.onload = () => resolve(src);
+      img.onerror = () => resolve(null);
+      img.src = src + '?t=' + Date.now();
+    });
+
+    const results = await Promise.all(candidateFiles.map(probe));
+    const foundImages = [...new Set(results.filter(Boolean))];
+
+    if (foundImages.length > 0) {
+      offersList = foundImages.map(src => ({
+        image: src,
+        title: 'Special Offer & Announcement 🌿',
+        subtitle: 'Contact Dr. Kasirao for personalized organic farming guidance & diagnostic services.',
+        badge: 'Seasonal Offer',
+        link: 'https://wa.me/919398544652?text=Hello%20Farmoology,%20I%20saw%20your%20offer%20and%20would%20like%20details!',
+        buttonText: 'Claim Offer on WhatsApp'
+      }));
+    }
+  }
+
+  // If no offer photos exist, keep modal and floating button hidden
+  if (offersList.length === 0) return;
+
+  // Render offer at given index
+  function renderOffer(idx) {
+    if (idx < 0) idx = offersList.length - 1;
+    if (idx >= offersList.length) idx = 0;
+    currentIndex = idx;
+
+    const offer = offersList[currentIndex];
+    offerImage.src = offer.image;
+    offerTitle.textContent = offer.title || 'Special Announcement 🌿';
+    offerSubtitle.textContent = offer.subtitle || '';
+    if (offerBadgeText) offerBadgeText.textContent = offer.badge || 'New Notification';
+    if (offerActionBtn) {
+      offerActionBtn.href = offer.link || 'https://wa.me/919398544652';
+      if (offerActionText) offerActionText.textContent = offer.buttonText || 'Claim Offer on WhatsApp';
+    }
+
+    if (offerDots && offersList.length > 1) {
+      offerDots.innerHTML = offersList.map((_, i) =>
+        `<span class="offer-dot ${i === currentIndex ? 'active' : ''}" data-idx="${i}"></span>`
+      ).join('');
+      offerDots.querySelectorAll('.offer-dot').forEach(dot => {
+        dot.onclick = () => renderOffer(parseInt(dot.dataset.idx, 10));
+      });
+    }
+  }
+
+  if (offersList.length > 1 && offerNavBtns) {
+    offerNavBtns.style.display = 'flex';
+    if (offerPrevBtn) offerPrevBtn.onclick = () => renderOffer(currentIndex - 1);
+    if (offerNextBtn) offerNextBtn.onclick = () => renderOffer(currentIndex + 1);
+  }
+
+  renderOffer(0);
+
+  // Show floating pill button
+  if (floatingBtn) {
+    floatingBtn.style.display = 'inline-flex';
+    if (floatingCount) floatingCount.textContent = offersList.length;
+    floatingBtn.onclick = openModal;
+  }
+
+  function openModal() {
+    offerModal.classList.add('active');
+    offerModal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('offer-modal-open');
+  }
+
+  function closeModal() {
+    offerModal.classList.remove('active');
+    offerModal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('offer-modal-open');
+    sessionStorage.setItem('farmoology_offer_seen', 'true');
+  }
+
+  if (offerCloseBtn) offerCloseBtn.onclick = closeModal;
+  if (offerDismissBtn) offerDismissBtn.onclick = closeModal;
+  if (offerBackdrop) offerBackdrop.onclick = closeModal;
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && offerModal.classList.contains('active')) {
+      closeModal();
+    }
+  });
+
+  // Auto-open after 1.5 seconds if visitor hasn't dismissed it in this session
+  if (!sessionStorage.getItem('farmoology_offer_seen')) {
+    setTimeout(openModal, 1500);
+  }
+}
+
+// Initialize on page load
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initOfferNotifications);
+} else {
+  initOfferNotifications();
+}

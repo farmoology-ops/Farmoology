@@ -862,6 +862,46 @@
   <i class="fas fa-arrow-up"></i>
 </button>
 
+<!-- ░░ OFFER & NOTIFICATION POPUP ░░ -->
+<div class="offer-modal" id="offerModal" aria-hidden="true" role="dialog" aria-labelledby="offerTitle">
+  <div class="offer-backdrop" id="offerBackdrop"></div>
+  <div class="offer-card">
+    <button class="offer-close-btn" id="offerCloseBtn" aria-label="Close Notification">
+      <i class="fas fa-times"></i>
+    </button>
+    <div class="offer-badge" id="offerBadge">
+      <span class="offer-pulse-dot"></span>
+      <span id="offerBadgeText">Special Announcement</span>
+    </div>
+    <div class="offer-image-wrap">
+      <img id="offerImage" src="" alt="Farmoology Offer" loading="lazy" />
+      <div class="offer-nav-btns" id="offerNavBtns" style="display:none;">
+        <button class="offer-nav-btn prev" id="offerPrevBtn" aria-label="Previous Offer"><i class="fas fa-chevron-left"></i></button>
+        <button class="offer-nav-btn next" id="offerNextBtn" aria-label="Next Offer"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+    <div class="offer-content">
+      <h3 id="offerTitle" class="offer-title">Special Offer</h3>
+      <p id="offerSubtitle" class="offer-subtitle"></p>
+      <div class="offer-actions">
+        <a id="offerActionBtn" href="https://wa.me/919398544652" target="_blank" rel="noopener noreferrer" class="offer-btn-primary">
+          <i class="fab fa-whatsapp"></i>
+          <span id="offerActionText">Claim Offer on WhatsApp</span>
+        </a>
+        <button class="offer-btn-dismiss" id="offerDismissBtn">Dismiss</button>
+      </div>
+      <div class="offer-dots" id="offerDots"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ░░ FLOATING OFFER TRIGGER BUTTON ░░ -->
+<button class="floating-offer-btn" id="floatingOfferBtn" style="display:none;" aria-label="View Offers & Notifications">
+  <span class="fob-icon"><i class="fas fa-bell"></i></span>
+  <span class="fob-text">Offers &amp; Updates</span>
+  <span class="fob-badge" id="floatingOfferCount">1</span>
+</button>
+
 <script src="script.js"></script>
 </body>
 </html>

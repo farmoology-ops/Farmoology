@@ -1,0 +1,33 @@
+===================================================================
+FARMOOLOGY - HOW TO ADD OFFERS & NOTIFICATIONS
+===================================================================
+
+You have two very easy ways to show an offer or notification on your website:
+
+-------------------------------------------------------------------
+METHOD 1 (EASIEST - ZERO CODE):
+-------------------------------------------------------------------
+1. Save your offer, discount, or announcement photo in this folder.
+2. Name it:
+      offer1.jpg   (or offer1.png)
+   or offer2.jpg
+   or notification.jpg
+3. That's it! When anyone visits your website, an attractive popup
+   notification will automatically appear showing your offer photo
+   with a direct WhatsApp enquiry button.
+
+To remove an offer:
+- Just delete or rename the image file in this folder.
+
+-------------------------------------------------------------------
+METHOD 2 (CUSTOM TITLE & LINK):
+-------------------------------------------------------------------
+Open the file 'offers.json' in this folder:
+- Set "enabled": true (or false to hide notifications)
+- Put your image name (e.g. "offers/offer1.jpg")
+- Customize the title, subtitle, or button text
+- Add your WhatsApp message link
+
+When you are ready to publish online:
+- Push the changes to GitHub, and it will be live immediately!
+===================================================================
